@@ -2,15 +2,35 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
+import {ReactiveFormsModule} from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { HttpClientModule } from '@angular/common/http';
+
+//componentes
 import { AppComponent } from './app.component';
+import { CrearLibroComponent } from './components/crear-libro/crear-libro.component';
+import { ListarLibrosComponent } from './components/listar-libros/listar-libros.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { CrearUsuarioComponent } from './components/crear-usuario/crear-usuario.component';
+import { ListarUsuariosComponent } from './components/listar-usuarios/listar-usuarios.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CrearLibroComponent,
+    ListarLibrosComponent,
+    NavbarComponent,
+    CrearUsuarioComponent,
+    ListarUsuariosComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
