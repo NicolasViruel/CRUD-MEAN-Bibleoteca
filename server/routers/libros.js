@@ -12,4 +12,6 @@ router.put("/:id", libroController.actualizarLibro);
 
 router.get("/:id", libroController.obtenerLibro);
 
+router.get("/buscar/:id", libroController.buscarLibro)
+
 module.exports = router;

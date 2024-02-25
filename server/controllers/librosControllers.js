@@ -17,8 +17,8 @@ const crearLibro = async (req, res) =>{
     const {nombre, author} = req.body;
 
     const nuevoLibro = new libroModelo({
-        nombre,
-        author
+        nombre: nombre.toLowerCase(),
+        author: author.toLowerCase()
     });
     try {
         const libro = await nuevoLibro.save();
@@ -77,10 +77,28 @@ const obtenerLibro = async (req, res) =>{
     }
 }
 
+const buscarLibro = async (req, res) =>{
+    try {
+
+        let libro = await libroModelo.find({ nombre: req.params.id});
+
+        if (!libro) {
+            res.status(404).send({msg:"No existe el Libro"})
+        }
+
+        res.json(libro);
+
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Hubo un error al actualizar el libro')
+    }
+}
+
 module.exports ={
     traerLibros,
     crearLibro,
     eliminarLibro,
     actualizarLibro,
-    obtenerLibro
+    obtenerLibro,
+    buscarLibro
 }

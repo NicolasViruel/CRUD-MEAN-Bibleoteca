@@ -10,6 +10,14 @@ const ReservaSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: "tecsolutionslibros",
+    },
+    fechaCreacion: {
+        type: Date,
+        default: Date.now()
+    },
+    devuelto: {
+        type: Boolean,
+        default: false
     }
 });
 
