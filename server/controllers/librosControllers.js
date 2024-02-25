@@ -82,7 +82,7 @@ const buscarLibro = async (req, res) =>{
 
         let libro = await libroModelo.find({ nombre: req.params.id});
 
-        if (!libro) {
+        if (!libro || libro.length === 0) {
             res.status(404).send({msg:"No existe el Libro"})
         }
 
@@ -90,7 +90,7 @@ const buscarLibro = async (req, res) =>{
 
     } catch (error) {
         console.log(error);
-        res.status(500).send('Hubo un error al actualizar el libro')
+        res.status(500).send('Hubo un error al buscar el libro')
     }
 }
 

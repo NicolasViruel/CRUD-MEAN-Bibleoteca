@@ -15,6 +15,9 @@ export class LibrosService {
   getLibros(): Observable<any>{
    return this.http.get(this.url);
   }
+  // getLibros(filter: string): Observable<any>{
+  //   return this.http.get(`${this.url}/buscar/${filter}`);
+  //  }
 
   eliminarLibros(id: string): Observable<any> {
     return this.http.delete(this.url + id);
@@ -31,4 +34,8 @@ export class LibrosService {
   editarLibro(id: string, libro: Libro): Observable<any>{
     return this.http.put(this.url + id, libro)
   } 
+
+  buscarLibro(data: string): Observable<any>{
+    return this.http.get(`${this.url}buscar/${data}`);
+  }
 }
