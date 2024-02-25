@@ -1,0 +1,51 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <div class="card">
+                <div class="card-body text-center">
+                    <span class="titulo">Crear Reserva </span>
+                    <form class="mt-3" [formGroup]="reservaForm" (ngSubmit)="agregarReserva()">
+                        <div class="mb-3">
+                            <input type="text" formControlName="nombre"
+                            class="form-control form-control-lg" placeholder="Ingresa tu Nombre" >
+                            <div class="text-danger"
+                            *ngIf="reservaForm.get('nombre')?.hasError('required') && reservaForm.get('nombre')?.touched">
+                                <span>Tu nombre <strong>es obligatorio</strong></span>
+                            </div>
+                            <div class="text-danger"
+                            *ngIf="reservaForm.get('nombre')?.hasError('minlength') && reservaForm.get('nombre')?.touched">
+                            <span>Tu nombre debe tener al menos 4 caracteres</span>
+                            </div>
+                            <div class="text-danger"
+                            *ngIf="reservaForm.get('nombre')?.hasError('maxlength') && reservaForm.get('nombre')?.touched">
+                            <span>Tu nombre no puede exceder los 50 caracteres</span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" formControlName="libro"
+                             class="form-control form-control-lg" placeholder="libro" >
+                            <div class="text-danger"
+                            *ngIf="reservaForm.get('libro')?.hasError('required') && reservaForm.get('libro')?.touched">
+                                <span>EL nombre del libro <strong>es obligatorio</strong></span>
+                            </div>
+                            <div class="text-danger"
+                            *ngIf="reservaForm.get('libro')?.hasError('minlength') && reservaForm.get('libro')?.touched">
+                            <span>El nombre del libro debe tener al menos 4 caracteres</span>
+                            </div>
+                            <div class="text-danger"
+                            *ngIf="reservaForm.get('libro')?.hasError('maxlength') && reservaForm.get('libro')?.touched">
+                            <span>El nombre del libro no puede exceder los 50 caracteres</span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <button routerLink="/listar-reservas" class="btn btn-secondary btn-lg float-start"> Volver</button>
+                            <button type="submit" [disabled]="reservaForm.invalid" class="btn btn-success btn-lg float-end" > Aceptar</button>
+                        </div>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
