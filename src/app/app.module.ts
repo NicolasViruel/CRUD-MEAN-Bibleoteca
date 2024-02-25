@@ -14,6 +14,8 @@ import { ListarLibrosComponent } from './components/listar-libros/listar-libros.
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { CrearUsuarioComponent } from './components/crear-usuario/crear-usuario.component';
 import { ListarUsuariosComponent } from './components/listar-usuarios/listar-usuarios.component';
+import { CrearReservaComponent } from './components/crear-reserva/crear-reserva.component';
+import { ListarReservaComponent } from './components/listar-reserva/listar-reserva.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { ListarUsuariosComponent } from './components/listar-usuarios/listar-usu
     ListarLibrosComponent,
     NavbarComponent,
     CrearUsuarioComponent,
-    ListarUsuariosComponent
+    ListarUsuariosComponent,
+    CrearReservaComponent,
+    ListarReservaComponent
   ],
   imports: [
     BrowserModule,

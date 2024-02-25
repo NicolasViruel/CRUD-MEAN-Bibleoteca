@@ -19,15 +19,6 @@ export class ListarLibrosComponent implements OnInit {
     this.obtenerLibros();
   }
 
-  // obtenerLibros() {
-  //   this._libroService.getLibros().subscribe(data =>{
-  //     this.listLibros = data;
-  //   }, error =>{
-  //     console.log(error);
-      
-  //   })
-  // }
-
   // Es importante tener en cuenta que este metodo ordenara los libros directamente en el arreglo listLibros
   //  que se muestra en tu plantilla. Si quiero mantener el arreglo original intacto y mostrar
   //  una lista ordenada en la plantilla, podriamos crear un nuevo arreglo ordenado y asignarlo a listLibros en 
@@ -57,12 +48,5 @@ export class ListarLibrosComponent implements OnInit {
       });
     }
   }
-  
-  // mostrarSpinner(visible: boolean) {
-  //   // Implementa la lógica para mostrar u ocultar el spinner
-  //   // Aquí estamos suponiendo que tienes una variable en tu componente llamada mostrarSpinner
-  //   // que se utiliza para mostrar u ocultar el spinner en tu template
-  //   this.mostrarSpinner = visible;
-  // }
 
 }
