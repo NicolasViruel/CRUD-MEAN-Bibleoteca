@@ -1,9 +1,15 @@
-<div class="container mt-5">
+<!-- <div class="container mt-5">
     <div class="row">
+        <div class="col-3 mb-3">
+          <input type="search"  [formControl]="busqueda"
+            aria-label="Search" placeholder="Buscar libro" class="form-control">
+        </div>
+        
         <div class="col-lg-8 offset-lg-2">
             <div class="card">
                 <div class="card-body text-center">
                     <span class="titulo">LISTADO DE LIBROS</span>
+                    
                     <button class="btn btn-success float-end" routerLink="/crear-libro"> Nuevo</button>
                     <table *ngIf="listLibros.length > 0" class="table table-striped mt-2 table-responsive">
                       <div class="d-flex align-items-center" *ngIf="mostrarSpinner">
@@ -26,14 +32,6 @@
                                 <i (click)="eliminarLibro(libro._id)" class="fa-solid fa-trash text-danger"></i>
                             </td>
                           </tr>
-                          <!-- <tr>
-                            <td>Libro de Angular</td>
-                            <td>Fernando Acosta</td>
-                            <td>
-                                <i class="fa-solid fa-pen-to-square text-primary"></i>
-                                <i class="fa-solid fa-trash text-danger"></i>
-                            </td>
-                          </tr> -->
                         </tbody>
                     </table>
                       <h5 style="text-align: start; margin-top: 10px;" *ngIf="listLibros.length == 0">No hay libros para mostrar</h5>
@@ -41,4 +39,47 @@
             </div>
         </div>
     </div>
+</div> -->
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-4 mb-3">
+      <input type="search" [formControl]="busqueda" aria-label="Search" placeholder="Buscar libro por Nombre" class="form-control">
+    </div>
+
+    <div class="col-lg-8 offset-lg-2">
+      <div class="card">
+        <div class="card-body text-center">
+          <span class="titulo">LISTADO DE LIBROS</span>
+
+          <button class="btn btn-success float-end" routerLink="/crear-libro"> Nuevo</button>
+          <table *ngIf="librosFiltrados.length > 0" class="table table-striped mt-2 table-responsive">
+            <div class="d-flex align-items-center" *ngIf="mostrarSpinner">
+              <strong>Cargando...</strong>
+              <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
+            </div>
+            <thead>
+              <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Author</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let libro of librosFiltrados">
+                <td> {{libro.nombre}} </td>
+                <td> {{libro.author}}</td>
+                <td>
+                  <i [routerLink]="['/editar-libro', libro._id]" class="fa-solid fa-pen-to-square text-primary"></i>
+                  <i (click)="eliminarLibro(libro._id)" class="fa-solid fa-trash text-danger"></i>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <h5 style="text-align: start; margin-top: 10px;" *ngIf="librosFiltrados.length == 0">No hay libros para mostrar</h5>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
