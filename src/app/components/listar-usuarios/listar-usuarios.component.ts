@@ -20,6 +20,7 @@ export class ListarUsuariosComponent implements OnInit {
 
   obtenerUsuario() {
     this._usuarioService.getUsuarios().subscribe(data =>{
+      console.log(data);
       this.listUsuarios = data
     }, error =>{
       console.log(error);
