@@ -64,12 +64,12 @@ export class ListarLibrosComponent implements OnInit {
     this.busqueda.valueChanges
       .pipe(debounceTime(800), distinctUntilChanged())
       .subscribe((data) => {
-        this.mostrarSpinner = false
+        this.mostrarSpinner = true
         // Filtra la lista completa en base a la busqueda
         this.librosFiltrados = this.listLibros.filter(
           (libro) => libro.nombre.toLowerCase().includes(data.toLowerCase())
         );
-        this.mostrarSpinner = true;
+        this.mostrarSpinner = false;
 
         if (this.librosFiltrados.length === 0) {
           this.toastr.info('No se encontraron libros para la búsqueda', 'Información');

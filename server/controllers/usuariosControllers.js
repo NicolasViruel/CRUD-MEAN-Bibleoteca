@@ -18,9 +18,9 @@ const crearUsuario = async (req, res) =>{
     const {nombre, apellido, email} = req.body;
 
     const nuevoUsuario = new usuarioModelo({
-        nombre,
-        apellido,
-        email,
+        nombre: nombre.toLowerCase(),
+        apellido: apellido.toLowerCase(),
+        email: email.toLowerCase()
     });
     try {
         const usuario = await nuevoUsuario.save();

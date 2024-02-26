@@ -1,20 +1,33 @@
 const reservaModelo = require("../models/reserva")
+const libroModelo = require("../models/libro");
+const usuarioModelo = require("../models/usuario");
 
 const crearReserva = async (req, res) => {
     const { usuario_id, libro_id } = req.body;
-    
-    const newReserva = new reservaModelo({
-        usuario_id,
-        libro_id
-    });
-    
+
     try {
-        //traer la reserva de un usuario tiene que ser menos que 5
-        const reservasUsuario = await reservaModelo.find({"usuario_id" : usuario_id});
-        const librosDevueltos = reservasUsuario.filter( r =>   r.devuelto == false )
-        if (librosDevueltos.length >= 5) {
-            return res.status(400).send({msg: "El usuario ya tiene reservados 5 libros"});
+        // Verificar si el libro ya está reservado por cualquier usuario
+        const reservaExistente = await reservaModelo.findOne({
+            libro_id,
+            devuelto: false
+        });
+
+        if (reservaExistente) {
+            return res.status(400).send({ msg: "Este libro ya está reservado por otro usuario" });
         }
+
+        // Verificar el límite de 5 libros por usuario
+        const reservasUsuario = await reservaModelo.find({ usuario_id, devuelto: false });
+        if (reservasUsuario.length >= 5) {
+            return res.status(400).send({ msg: "El usuario ya tiene reservados 5 libros" });
+        }
+
+        // Crear la reserva
+        const newReserva = new reservaModelo({
+            usuario_id,
+            libro_id
+        });
+
         const reserva = await newReserva.save();
         return res.status(201).send(reserva);
     } catch (error) {
@@ -69,6 +82,7 @@ const traerReservasUsuario = async (req, res) =>{
     }
 }
 
+//devolverLibro
 const actualizarReserva = async(req, res) =>{
     const {devuelto} = req.body
 
@@ -108,6 +122,88 @@ const obtenerReserva = async (req, res) =>{
     }
 }
 
+//controladores para obtener los id de los usuarios y libros
+
+// const obtenerIdLibroPorNombre = async (req, res) => {
+//     const { nombre } = req.params;
+
+//     try {
+//         const libro = await libroModelo.findOne({ nombre });
+//         if (libro) {
+//             res.status(200).json({ idLibro: libro._id });
+//         } else {
+//             res.status  (404).json({ msg: "Libro no encontrado" });
+//         }
+//     } catch (error) {
+//         console.error(error);
+//         res.status(500).send(error);
+//     }
+// };
+
+// const obtenerIdUsuarioPorNombre = async (req, res) => {
+//     const { nombre } = req.params;
+
+//     try {
+//         const usuario = await usuarioModelo.findOne({ nombre });
+//         if (usuario) {
+//             res.status(200).json({ idUsuario: usuario._id });
+//         } else {
+//             res.status(404).json({ msg: "Usuario no encontrado" });
+//         }
+//     } catch (error) {
+//         console.error(error);
+//         res.status(500).send(error);
+//     }
+// };
+
+const obtenerIdUsuarioPorNombre = async (req, res) => {
+    const { nombre } = req.params;
+  
+    try {
+      const usuario = await usuarioModelo.findOne({ nombre });
+      if (usuario) {
+        res.status(200).json({ idUsuario: usuario._id.toString() }); // Convertir a cadena
+      } else {
+        res.status(404).json({ msg: "Usuario no encontrado" });
+      }
+    } catch (error) {
+      console.error(error);
+      res.status(500).send(error);
+    }
+};
+
+const obtenerIdLibroPorNombre = async (req, res) => {
+    const { nombre } = req.params;
+  
+    try {
+      const libro = await libroModelo.findOne({ nombre });
+      if (libro) {
+        res.status(200).json({ idLibro: libro._id.toString() }); // Convertir a cadena
+      } else {
+        res.status(404).json({ msg: "Libro no encontrado" });
+      }
+    } catch (error) {
+      console.error(error);
+      res.status(500).send(error);
+    }
+};
+
+const verificarLibroReservado = async (req, res) => {
+    const { libroId } = req.params;
+  
+    try {
+      const reservaExistente = await reservaModelo.findOne({
+        libro_id: libroId,
+        devuelto: false
+      });
+  
+      res.json(!!reservaExistente);
+    } catch (error) {
+      console.error('Error al verificar libro reservado:', error);
+      res.status(500).send('Error en el servidor');
+    }
+  };
+
 
 
 
@@ -118,4 +214,7 @@ module.exports ={
     eliminarReserva,
     crearReserva,
     traerReservasUsuario,
+    obtenerIdLibroPorNombre,
+    obtenerIdUsuarioPorNombre,
+    verificarLibroReservado
 }

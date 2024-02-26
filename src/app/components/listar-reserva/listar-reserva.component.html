@@ -10,13 +10,17 @@
                             <tr >
                               <th scope="col">Nombre</th>
                               <th scope="col">Libro</th>
+                              <th scope="col">Fecha Creacion</th>
+                              <th scope="col">Estado</th>
                               <th scope="col">Acciones</th>
                             </tr>
                           </thead>
                           <tbody>
                             <tr *ngFor="let reservas of listReservas">
-                              <td>{{reservas.nombre}}</td>
-                              <td>{{reservas.libro}}</td>
+                              <td>{{ reservas.usuario_id.nombre }} {{ reservas.usuario_id.apellido }}</td>
+                              <td>{{reservas.libro_id.nombre}} de {{ reservas.libro_id.author }}</td>
+                              <td>{{reservas.fechaCreacion}}</td>
+                              <td [ngClass]="{'text-verde': reservas.devuelto, 'text-rojo': !reservas.devuelto}">{{reservas.devuelto}}</td>
                               <td>
                                 <i class="fa-solid fa-pen-to-square text-primary"></i>
                                 <i (click)="eliminarReserva(reservas._id)" class="fa-solid fa-trash text-danger"></i>
@@ -31,4 +35,3 @@
         </div>
     </div>
 </div>
-
