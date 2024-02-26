@@ -1,27 +1,63 @@
-# Client
+# Proyecto Biblioteca TecSolutions
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.2.
+Este proyecto se generó con [Angular CLI](https://github.com/angular/angular-cli) versión 12.1.2.
 
-## Development server
+## Servidor de desarrollo :t-rex:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Navegue hasta la carpeta `client` y Ejecute `ngserve` para un servidor de desarrollo. Navegue hasta `http://localhost:4200/`. La aplicación se recargará automáticamente si cambia alguno de los archivos fuente.
 
-## Code scaffolding
+## Servidor API ⚙️
+Navegue hasta la carpeta `server` y Ejecute `npm run start` para un servidor de desarrollo. Navegue hasta `http://localhost:4000/`.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Ejecute `ng build` para construir el proyecto. Los artefactos de compilación se almacenarán en el directorio `dist/`.
 
 ## Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+## Scafolding Proyect 
+client
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+------>server
 
-## Further help
+------------->src
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+----------------->app
+
+---------------------->components
+
+---------------------->models
+
+---------------------->services
+
+
+## Herramientas Utilizadas🛠️
+
+#### - Frontend
+###### 1. - Angular
+###### 2. - TypeScript
+###### 3. - RouterModule
+###### 4. - HttpClientModule
+###### 5. - Toastr
+###### 6. - ReactiveFormsModule
+###### 7. - Bootstrap
+
+#### - Back-end
+###### 1. - Node.js
+###### 2. - Express
+###### 3. - mongoose
+###### 4. - body-parser
+###### 5. - cors
+###### 6. - dotenv
+###### 7. - nodemon
+
+#### - Base de datos
+
+###### 1. - MongoDB(atlas)
+
+## Más ayuda
+
+Para obtener más ayuda sobre Angular CLI, use `ng help` o consulte la página [Descripción general y referencia de comandos de Angular CLI] (https://angular.io/cli)
