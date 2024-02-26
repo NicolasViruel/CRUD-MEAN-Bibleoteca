@@ -11,7 +11,6 @@ import { ReservasService } from 'src/app/services/reservas.service';
 })
 export class ListarReservaComponent implements OnInit {
   listReservas: Reserva[] = [];
-  // reservaId: string = ''
 
 
   constructor(private _reservaService: ReservasService,
@@ -19,7 +18,6 @@ export class ListarReservaComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    // this.reservaId = this.route.snapshot.paramMap.get('id');
     this.obtenerReservas()
   }
 
@@ -35,6 +33,7 @@ export class ListarReservaComponent implements OnInit {
   }
 
   eliminarReserva(id: any){
+    if (window.confirm('¿Estás seguro de que deseas eliminar este libro?')) {
     this._reservaService.eliminarReserva(id).subscribe(data =>{
       this.toastr.error('La reserva fue eliminada con exito', 'Reserva Eliminada');
       this.obtenerReservas();
@@ -43,5 +42,6 @@ export class ListarReservaComponent implements OnInit {
       
     })
   }
+}
 
 }

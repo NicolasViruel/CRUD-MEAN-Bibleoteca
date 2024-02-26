@@ -2,3 +2,13 @@
     cursor: pointer;
     margin-left: 7px;
 }
+
+.text-verde {
+    color: green;
+    font-weight: bold;
+  }
+  
+.text-rojo {
+    color: red;
+    font-weight: bold;
+}
