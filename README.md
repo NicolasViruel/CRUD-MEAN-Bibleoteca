@@ -5,9 +5,11 @@ Este proyecto se generó con [Angular CLI](https://github.com/angular/angular-cl
 ## Servidor de desarrollo :t-rex:
 
 Navegue hasta la carpeta `client` y Ejecute `ngserve` para un servidor de desarrollo. Navegue hasta `http://localhost:4200/`. La aplicación se recargará automáticamente si cambia alguno de los archivos fuente.
+Recuerde ejecutar el comando el comando `npm install` para instalar todas las dependencias.
 
 ## Servidor API ⚙️
 Navegue hasta la carpeta `server` y Ejecute `npm run start` para un servidor de desarrollo. Navegue hasta `http://localhost:4000/`.
+Recuerde ejecutar el comando el comando `npm install` para instalar todas las dependencias.
 
 
 ## Build
